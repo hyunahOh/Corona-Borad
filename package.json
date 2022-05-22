@@ -1,0 +1,23 @@
+{
+  "name": "coronaboard-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyunahOh/Corona-Borad.git"
+  },
+  "author": "hyunahOh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hyunahOh/Corona-Borad/issues"
+  },
+  "homepage": "https://github.com/hyunahOh/Corona-Borad#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
+}
