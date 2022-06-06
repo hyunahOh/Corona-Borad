@@ -8,26 +8,22 @@ async function getAll(req, res) {
 }
 
 async function insertOrUpdate(req, res) {
-  try {
-    const { cc, date } = req.body;
+  const { cc, date } = req.body;
 
-    if (!cc || !date) {
-      res.status(400).json({ error: "cc and date are required" });
-      return;
-    }
-
-    const count = await GlobalStat.count({ where: { cc, date } });
-
-    if (count === 0) {
-      await GlobalStat.create(req.body);
-    } else {
-      await GlobalStat.update(req.body, { where: { cc, date } });
-    }
-
-    res.status(200).json({ result: "success" });
-  } catch (e) {
-    res.status(500).json({ error: e.toString() });
+  if (!cc || !date) {
+    res.status(400).json({ error: "cc and date are required" });
+    return;
   }
+
+  const count = await GlobalStat.count({ where: { cc, date } });
+
+  if (count === 0) {
+    await GlobalStat.create(req.body);
+  } else {
+    await GlobalStat.update(req.body, { where: { cc, date } });
+  }
+
+  res.status(200).json({ result: "success" });
 }
 
 async function remove(req, res) {

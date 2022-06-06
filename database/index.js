@@ -16,4 +16,5 @@ const sequelize = new Sequelize(config.database, config.user, config.password, {
 module.exports = {
   sequelize,
   GlobalStat: require("./global-stat.model")(sequelize),
+  KeyValue: require("./key-value.model")(sequelize),
 };
