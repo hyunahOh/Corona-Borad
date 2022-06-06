@@ -21,7 +21,13 @@ async function insertOrUpdate(req, res) {
     return;
   }
 
-  await KeyValue.update(req.body, { where: { key, value } });
+  const count = await KeyValue.count({ where: { key, value } });
+
+  if (count === 0) {
+    await KeyValue.create(req.body);
+  } else {
+    await KeyValue.update(req.body, { where: { key, value } });
+  }
 
   res.status(200).json({ result: "success" });
 }
