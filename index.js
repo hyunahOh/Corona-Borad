@@ -2,10 +2,17 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const { sequelize } = require("./database");
 
+const globalStatusController = require("./controller/global-stat.controller");
+const { get } = require("express/lib/response");
+
 async function launchServer() {
   const app = express();
 
   app.use(bodyParser.json());
+
+  app.get("/global-stats", globalStatusController.getAll);
+  app.post("/global-stats", globalStatusController.insertOrUpdate);
+  app.delete("/global-stats", globalStatusController.remove);
 
   app.get("/", (req, res) => {
     res.json({ message: "Hello CoronaBoard!" });
